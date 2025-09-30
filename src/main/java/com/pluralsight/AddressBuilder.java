@@ -30,8 +30,10 @@ public class AddressBuilder {
         System.out.printf("""
                 %s
                 
+                Billing Address:
                 %s
                 
+                Shipping Address:
                 %s""",
                 name, billingAddress, shippingAddress);
 
@@ -44,26 +46,22 @@ public class AddressBuilder {
         buildingAddress.append(input.nextLine());
         buildingAddress.append("\n \n Address: \n");
 
-        System.out.println("Billing Street: ");
+        System.out.println("Street: ");
         buildingAddress.append(input.nextLine());
         buildingAddress.append("\n");
 
-        System.out.println("Billing City: ");
+        System.out.println("City: ");
         buildingAddress.append(input.nextLine());
         buildingAddress.append(", ");
 
-        System.out.println("Billing State: ");
+        System.out.println("State: ");
         buildingAddress.append(input.nextLine());
         buildingAddress.append(" ");
 
-        System.out.println("Billing ZIP: ");
+        System.out.println("ZIP: ");
         buildingAddress.append(input.nextLine());
 
-        System.out.println(buildingAddress.toString());
-
-
-
-        return address;
+        return buildingAddress.toString();
     }
 
 

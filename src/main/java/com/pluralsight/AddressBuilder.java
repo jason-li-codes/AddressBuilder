@@ -1,6 +1,5 @@
 package com.pluralsight;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class AddressBuilder {
@@ -9,61 +8,63 @@ public class AddressBuilder {
 
         Scanner input = new Scanner(System.in);
 
-        StringBuilder billingAddress = new StringBuilder();
-
         System.out.println("Please provide the following information: ");
 
         System.out.println("Full name: ");
-        billingAddress.append(input.nextLine());
-        billingAddress.append("\n \nBuilding Address: \n");
+        String name = input.nextLine();
 
-        System.out.println("Billing Street: ");
-        billingAddress.append(input.nextLine());
-        billingAddress.append("\n");
+        System.out.println("Let's start with your billing address.");
+        String billingAddress = addressFormatter(input);
 
-        System.out.println("Billing City: ");
-        billingAddress.append(input.nextLine());
-        billingAddress.append(", ");
+        System.out.println("Let's enter your shipping address. Is it the same as your billing address? Y/N");
+        char addressesSame = Character.toLowerCase(input.nextLine().charAt(0));
 
-        System.out.println("Billing State: ");
-        billingAddress.append(input.nextLine());
-        billingAddress.append(" ");
-
-        System.out.println("Billing ZIP: ");
-        billingAddress.append(input.nextLine());
-
-        System.out.println(billingAddress.toString());
-
-        StringBuilder shippingAddress = new StringBuilder();
-
-        System.out.println("Is your shipping address different from your billing address? Y/N");
-        char diffAddresses = Character.toLowerCase(input.nextLine().charAt(0));
-
-        if (diffAddresses == 'y') {
-
-            System.out.println("Shipping Street: ");
-            shippingAddress.append("Shipping Address: \n");
-            shippingAddress.append(input.nextLine());
-            shippingAddress.append("\n");
-
-            System.out.println("Shipping City: ");
-            shippingAddress.append(input.nextLine());
-
-            System.out.println("Shipping State: ");
-            String shippingState = input.nextLine();
-
-            System.out.println("Shipping ZIP: ");
-            String shippingZIP = input.nextLine();
+        String shippingAddress = "";
+        if (addressesSame == 'y') {
+            shippingAddress = billingAddress;
         }
         else {
-            shippingAddress.append(billingAddress);
+            shippingAddress = addressFormatter(input);
         }
 
-
-
+        System.out.printf("""
+                %s
+                
+                %s
+                
+                %s""",
+                name, billingAddress, shippingAddress);
 
     }
 
+    public static String addressFormatter(Scanner input) {
+
+        StringBuilder buildingAddress = new StringBuilder();
+
+        buildingAddress.append(input.nextLine());
+        buildingAddress.append("\n \n Address: \n");
+
+        System.out.println("Billing Street: ");
+        buildingAddress.append(input.nextLine());
+        buildingAddress.append("\n");
+
+        System.out.println("Billing City: ");
+        buildingAddress.append(input.nextLine());
+        buildingAddress.append(", ");
+
+        System.out.println("Billing State: ");
+        buildingAddress.append(input.nextLine());
+        buildingAddress.append(" ");
+
+        System.out.println("Billing ZIP: ");
+        buildingAddress.append(input.nextLine());
+
+        System.out.println(buildingAddress.toString());
+
+
+
+        return address;
+    }
 
 
 

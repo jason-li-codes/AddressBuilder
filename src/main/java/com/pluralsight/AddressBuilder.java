@@ -24,7 +24,7 @@ public class AddressBuilder {
         char addressesSame = Character.toLowerCase(input.nextLine().charAt(0));
 
         // based on that answer, either copies billing address or runs addressFormatter again
-        String shippingAddress = "";
+        String shippingAddress;
         if (addressesSame == 'y') {
             shippingAddress = billingAddress;
         }
@@ -35,14 +35,14 @@ public class AddressBuilder {
 
         // prints final result with name, billing address, and shipping address
         System.out.printf("""
-                Here is your information:
-                %s
-                
-                Billing Address:
-                %s
-                
-                Shipping Address:
-                %s""",
+                        Here is your information:
+                        %s
+                        
+                        Billing Address:
+                        %s
+                        
+                        Shipping Address:
+                        %s""",
                 name, billingAddress, shippingAddress);
 
     }
@@ -70,6 +70,7 @@ public class AddressBuilder {
 
         // returns the formatted address by converting the string builder to a string
         return buildingAddress.toString();
+
     }
 
 }

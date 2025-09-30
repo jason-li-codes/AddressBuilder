@@ -24,10 +24,12 @@ public class AddressBuilder {
             shippingAddress = billingAddress;
         }
         else {
+            System.out.println("Let's enter your shipping address.");
             shippingAddress = addressFormatter(input);
         }
 
         System.out.printf("""
+                Here is your information:
                 %s
                 
                 Billing Address:
@@ -43,9 +45,6 @@ public class AddressBuilder {
 
         StringBuilder buildingAddress = new StringBuilder();
 
-        buildingAddress.append(input.nextLine());
-        buildingAddress.append("\n \n Address: \n");
-
         System.out.println("Street: ");
         buildingAddress.append(input.nextLine());
         buildingAddress.append("\n");
@@ -55,7 +54,7 @@ public class AddressBuilder {
         buildingAddress.append(", ");
 
         System.out.println("State: ");
-        buildingAddress.append(input.nextLine());
+        buildingAddress.append(input.nextLine().toUpperCase());
         buildingAddress.append(" ");
 
         System.out.println("ZIP: ");
@@ -63,7 +62,5 @@ public class AddressBuilder {
 
         return buildingAddress.toString();
     }
-
-
 
 }
